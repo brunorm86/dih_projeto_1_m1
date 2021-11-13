@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- título na aba do navegador -->
+  <title>DevinHouse's To-Do List!</title>
+
+  <!-- favicon de https://favicon.io -->
+  <link rel="shortcut icon" href="icons/to-do-list.png" type="image/x-icon">
+
+  <!-- folha de estilos css -->
+  <link rel="stylesheet" href="styles/style.css">
+
+  <!-- código javascript -->
+  <script src="scripts/script.js" defer></script>
+
+</head>
+
+<body>
+
+  <header class="dark center">
+    <!-- cabeçalho dentro da página -->
+    <img src="images/IsdLe4ABF0416.png" alt="Logo" position="left" height="60%">
+    <table>
+      <tr>
+        <td>
+          <h1>ORGANIZADOR DE TAREFAS / TO-DO LIST</h1>
+        </td>
+        </tr>
+        <tr>
+        <td>
+         <p>Uma excelente ferramenta para organizar seus afazeres e otimizar seu tempo!</p>
+        </td>
+      </tr>
+    </table>
+  </header>
+
+  <nav>
+    <table>
+      <tr>
+        <td><img src="images/home_circle_icon_137496.png" alt="Home button" width="50%"></td>
+      </tr>
+    </table>
+  </nav>
+
+
+  <main>
+    <!-- rótulo para o campo -->
+    <label for="campo">Nova Tarefa</label>
+    <br>
+
+    <!-- campo de texto -->
+    <input name="campo" type="text" placeholder="Descreva a tarefa">
+
+    <!-- botão simples -->
+    <button id="btnCadastrar">Cadastrar</button>
+
+    <!-- botão input -->
+    <input id="btnLimpar" type="button" value="Limpar">
+
+    <h3>Tarefas Cadastradas</h3>
+
+    <!-- lista não ordenada -->
+    <ul id="ulAtividades" class="listaTarefas">
+
+    </ul>
+
+
+  </main>
+
+  <!-- rodapé opcional -->
+  <footer class="dark center">
+    <p>
+      Bruno Ricardo Machado &copy; 2021 &middot;
+      <a href="https://www.linkedin.com/in/bruno-ricardo-machado-783096218/" target="_blank">Linkedin</a>
+      &middot;
+      <a href="https://github.com/brunorm86/" target="_blank">Github</a>
+    </p>
+  </footer>
+
+
+</body>
+
+</html>

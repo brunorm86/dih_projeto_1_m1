@@ -1,0 +1,126 @@
+/* reset simples */
+
+* {
+  border: 1px solid black;
+  border-radius: 2%;
+}
+
+html,
+body,
+header,
+main,
+ul,
+li,
+footer {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* referencias de cores - https://materialui.co/colors */
+/* color picker - https://www.google.com/search?q=color+picker */
+
+html {
+  font-size: 5mm;
+  font-family: sans-serif;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  position: relative;
+  background-color: #e2e2e2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  width: 100%;
+  height: 25mm;
+  overflow: hidden;
+  }
+
+header h1 {
+  font-size: 1.25rem;
+
+}
+
+main {
+  width: 250mm;
+  max-width: calc(100vw - 50mm);
+  padding: 20mm;
+  
+  flex-grow: 1;
+  background-color: white;
+}
+
+.dark {
+  background-color: #282828;
+  color: #f0f0f0;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ul.listaTarefas {
+  margin: 5mm 0;
+  list-style: none;
+}
+
+ul.listaTarefas>li {
+  margin-bottom: 2.5mm;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  padding: 2.5mm;
+  display: flex;
+}
+
+ul.listaTarefas>li:last-child {
+  margin-bottom: 0;
+}
+
+ul.listaTarefas>li:hover {
+  border: 1px solid rgba(0, 0, 0, 0.275);
+  background-color: rgba(0, 0, 0, 0.025);
+}
+
+ul.listaTarefas>li>label {
+  padding: 0 5mm;
+  flex-grow: 1;
+}
+
+li.feito>label {
+  text-decoration: line-through;
+}
+
+footer {
+  height: 15mm;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+footer p,
+footer a {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.75rem;
+  transition: color 200ms;
+}
+
+footer a:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+@media (max-width: 600px) {
+  main {
+    max-width: 100vw;
+  }
+}
