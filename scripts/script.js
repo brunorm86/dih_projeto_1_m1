@@ -3,6 +3,7 @@ const campo = document.querySelector('input[name=campo]')
 const botaoCadastrar = document.getElementById('btnCadastrar')
 const botaoLimpar = document.getElementById('btnLimpar')
 const ulAtividades = document.getElementById('ulAtividades')
+var idUnico = 0;
 
 window.onload = function () {
   //ir no localStorage ver se tem pela chave que você está usando no código
@@ -34,22 +35,15 @@ function removeItem(index) {
   if (confirmar == true) {
     // cria lista vazia
     const novaLista = []
+    
+    listaTarefas = listaTarefas.filter(function (i) { return i.id !== index; });
 
-    // preenche a lista nova com todos itens menos o removido
-    for (let i = 0; i < listaTarefas.length; i++) {
-      // se o item não for o removido, vai pra nova lista
-      if (i !== index) {
-        novaLista.push(listaTarefas[i])
-      }
-    }
-
-    // pega item a ser removido do html
     const itemParaRemocao = document.getElementById(`item-${index}`)
     // remove ele do pai
     ulAtividades.removeChild(itemParaRemocao)
 
     // atualiza a lista com a lista nova
-    listaTarefas = novaLista
+    //  listaTarefas = novaLista
   }
 }
 // marca ou desmarca atividade
@@ -76,7 +70,7 @@ function adicionarTarefa() {
   if (campo.value.length > 0) {
     // define o objeto do item a ser adicionado
     const item = {
-      id: listaTarefas.length,
+      id: ++idUnico,
       titulo: campo.value,
       feito: false
     }
