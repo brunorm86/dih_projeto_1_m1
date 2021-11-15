@@ -20,7 +20,7 @@ footer {
 html {
   font-size: 5mm;
   font-family: sans-serif;
-  background-image: url("G:\OneDrive - UFSC\Devinhouse\Módulo 1 - Semana 04\dih_projeto_1_m1\images\background.jpg");
+  
 }
 
 body {
@@ -115,8 +115,4 @@ footer a {
 
 footer a:hover {
   color: rgba(219, 47, 47, 0.555);
-}
-
-button text:hover {
-  text-decoration: solid;
 }

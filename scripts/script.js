@@ -5,10 +5,9 @@ const botaoLimpar = document.getElementById('btnLimpar')
 const ulAtividades = document.getElementById('ulAtividades')
 var idUnico = 0;
 
-window.onload = function () {
-  //ir no localStorage ver se tem pela chave que você está usando no código
-  //vaso tenha, criar os respectivos itens no <ul>
-}
+
+  
+
 
 // inicia um vetor vazio
 let listaTarefas = []
@@ -34,9 +33,10 @@ function removeItem(index) {
 
   if (confirmar == true) {
     // cria lista vazia
-    const novaLista = []
-    
-    listaTarefas = listaTarefas.filter(function (i) { return i.id !== index; });
+  
+    listaTarefas = listaTarefas.filter(function (i) {
+       return i.id !== index; }
+       );
 
     const itemParaRemocao = document.getElementById(`item-${index}`)
     // remove ele do pai
@@ -64,13 +64,13 @@ function marcarFeito(index) {
   }
 
 }
-// adiciona itens a lista
+
 function adicionarTarefa() {
-  // verifica se o campo não está vazio
+  
   if (campo.value.length > 0) {
-    // define o objeto do item a ser adicionado
+    
     const item = {
-      id: ++idUnico,
+      id: idUnico++,
       titulo: campo.value,
       feito: false
     }
@@ -134,11 +134,13 @@ function criarItem() {
 }
 */
 
+//ir no localStorage ver se tem pela chave que você está usando no código
+  //vaso tenha, criar os respectivos itens no <ul>
 function carregarLista() {
   var storage = JSON.parse(localStorage.getItem('lista'));
   arrayLista = storage;
   for (var i = 0; i < arrayLista.length; i++) {
-    criarItem();
+    adicionarTarefa();
 
   }
 }
