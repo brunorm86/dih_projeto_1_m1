@@ -1,16 +1,13 @@
-/* reset simples */
-
-* {
-  border: 1px solid black;
-}
-
 html,
 body,
 header,
 main,
 ul,
 li,
-footer {
+footer,
+table,
+tr,
+td {
   margin: 0;
   border: 0;
   padding: 0;
@@ -18,9 +15,9 @@ footer {
 }
 
 html {
-  font-size: 5mm;
+  font-size: 20px;
   font-family: sans-serif;
-  
+
 }
 
 body {
@@ -28,6 +25,7 @@ body {
   min-height: 100vh;
   position: relative;
   background-color: #e2e2e2;
+  background-image: url("/images/back0.jpg");
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,7 +33,8 @@ body {
 
 header {
   width: 100%;
-  height: 25mm;
+  padding-top: 20px;
+  height: 30mm;
   overflow: hidden;
 }
 
@@ -48,9 +47,9 @@ main {
   width: 250mm;
   max-width: calc(100vw - 50mm);
   padding: 20mm;
-
+  background-image: -webkit-linear-gradient(grey, white);
   flex-grow: 1;
-  background-color: white;
+
 }
 
 .dark {
@@ -64,12 +63,12 @@ main {
   align-items: center;
 }
 
-ul.listaTarefas {
+ul.listaAtividades {
   margin: 10mm 0;
   list-style: none;
 }
 
-ul.listaTarefas>li {
+ul.listaAtividades>li {
   margin-bottom: 2.5mm;
   border: 1px solid rgba(0, 0, 0, 0.25);
   border-radius: 0%;
@@ -77,22 +76,24 @@ ul.listaTarefas>li {
   display: flex;
 }
 
-ul.listaTarefas>li:last-child {
+ul.listaAtividades>li:last-child {
   margin-bottom: 0;
 }
 
-ul.listaTarefas>li:hover {
+ul.listaAtividades>li:hover {
   border: 3px solid rgba(0, 0, 0, 0.775);
   background-color: rgba(0, 0, 0, 0.125);
 }
 
-ul.listaTarefas>li>label {
+ul.listaAtividades>li>label {
   padding: 0 5mm;
   flex-grow: 1;
 }
 
 li.feito>label {
   text-decoration: line-through;
+  font-style: italic;
+  color: gray;
 }
 
 footer {

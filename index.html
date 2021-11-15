@@ -15,52 +15,48 @@
 
 </head>
 
-<body onload="carregarItens()">
+<body onload="carregarAtividades()">
 
   <header class="dark center">
-    <!-- cabeçalho dentro da página -->
-    <img class="center" src="images/IsdLe4ABF0416.png" alt="Logo" position="left" height="60%">
-    <table class="center">
+
+    <table>
       <tr>
         <td>
-          <h1 class=center>ORGANIZADOR DE TAREFAS / TO-DO LIST</h1>
+          <h1 class="center">ORGANIZADOR DE ATIVIDADES / TO-DO LIST</h1>
         </td>
       </tr>
       <tr>
         <td>
-          <p>Uma excelente ferramenta para organizar seus afazeres e otimizar seu tempo!</p>
+          <p class="center">Uma excelente ferramenta para organizar seus afazeres e otimizar seu tempo!</p>
         </td>
       </tr>
     </table>
   </header>
 
 
-
   <main>
-    <!-- rótulo para o campo -->
-    <label for="campo">Nova Tarefa</label>
+
+    <label for="campo">Nova Atividade</label>
     <br>
 
-    <!-- campo de texto -->
-    <input name="campo" type="text" placeholder="Descreva a tarefa">
 
-    <!-- botão simples -->
+    <input size="100px" name="campo" type="text" placeholder="Descreva a atividade">
+
+
     <button id="btnCadastrar">Cadastrar</button>
 
-    <!-- botão input -->
+
     <input id="btnLimpar" type="button" value="Limpar">
 
-    <h3>Tarefas Cadastradas</h3>
+    <h3>Atividades Cadastradas</h3>
 
-    <!-- lista não ordenada -->
-    <ul id="ulAtividades" class="listaTarefas">
+    <ul id="ulAtividades" class="listaAtividades">
 
     </ul>
 
 
   </main>
 
-  <!-- rodapé opcional -->
   <footer class="dark center">
     <p>
       Bruno Ricardo Machado &copy; 2021 &middot;

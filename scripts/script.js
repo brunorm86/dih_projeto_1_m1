@@ -1,87 +1,82 @@
-// pega elementos do html
+//Variáveis globais
 const campo = document.querySelector('input[name=campo]')
 const botaoCadastrar = document.getElementById('btnCadastrar')
 const botaoLimpar = document.getElementById('btnLimpar')
 const ulAtividades = document.getElementById('ulAtividades')
+
+//Variável para "setar" id das tarefas
 var idUnico = 0;
 
+let listaAtividades = []
 
-  
-
-
-// inicia um vetor vazio
-let listaTarefas = []
-
-// pega conteúdo do localStorage
 let listaStorage = localStorage.getItem('listaAtividades')
 
-// verifica se existe conteúdo
-if (listaStorage) {
-  // mostra no console se tiver
-  console.log(listaStorage)
-}
 
-// apaga conteudo do campo
 function limparCampo() {
+
+  if (campo.value == '') {
+    alert("Não há texto a ser limpo!")
+  }
+
   campo.value = ''
 }
 
-// remove uma das atividades
 function removeItem(index) {
 
   let confirmar = confirm("Realmente deseja apagar esta tarefa?");
 
   if (confirmar == true) {
-    // cria lista vazia
-  
-    listaTarefas = listaTarefas.filter(function (i) {
-       return i.id !== index; }
-       );
+
+
+    const novaLista = []
+
+    for (let i = 0; i < listaAtividades.length; i++) {
+
+      if (i !== index) {
+        novaLista.push(listaAtividades[i])
+      }
+    }
 
     const itemParaRemocao = document.getElementById(`item-${index}`)
-    // remove ele do pai
     ulAtividades.removeChild(itemParaRemocao)
 
-    // atualiza a lista com a lista nova
-    //  listaTarefas = novaLista
+
+    listaAtividades = novaLista;
   }
 }
-// marca ou desmarca atividade
+
 function marcarFeito(index) {
-  // verifica se existe esse índice na lista
-  if (listaTarefas[index]) {
-    // pega item da lista
-    const item = listaTarefas[index]
 
-    // inverte o valor de feito
-    item.feito = !(item.feito)
 
-    // pega o elemento do html
-    const elemento = document.getElementById(`item-${index}`)
+  for (let i = 0; i < listaAtividades.length; i++) {
 
-    // atualiza a classe para riscar ou não
-    elemento.className = item.feito ? 'feito' : ''
+
+    if (listaAtividades[i].id == index) {
+      const item = listaAtividades[i]
+      item.feito = !(item.feito)
+      const elemento = document.getElementById(`item-${index}`)
+      elemento.className = item.feito ? 'feito' : ''
+    }
+
   }
-
 }
+function adicionarAtividade() {
 
-function adicionarTarefa() {
-  
   if (campo.value.length > 0) {
-    
+
     const item = {
       id: idUnico++,
       titulo: campo.value,
       feito: false
     }
 
-    // cria um novo item de lista html
+
     const novoElemento = document.createElement('li')
 
-    // adiciona atributo id ao item html
+
     novoElemento.id = `item-${item.id}`
 
-    // preenche o conteúdo do item html
+
     novoElemento.innerHTML = `
       <input
         type="checkbox"
@@ -96,58 +91,59 @@ function adicionarTarefa() {
       </button>
     `
 
-    // manda o item novo para o documento html
     ulAtividades.appendChild(novoElemento)
 
-    // adiciona também no vetor da lista
-    listaTarefas.push(item)
 
-    console.log("LISTA->", { listaTarefas })
+    listaAtividades.push(item)
 
-    // converte para string JSON
-    const listaJSON = JSON.stringify(listaTarefas)
+    console.log("LISTA->", { listaAtividades })
 
-    // armazena do localStorage
+    const listaJSON = JSON.stringify(listaAtividades)
+
     localStorage.setItem('listaAtividades', listaJSON)
 
     limparCampo()
+
   } else {
-    // avisa que o campo está vazio
-    alert('Não é possível cadastrar uma tarefa vazia!')
+
+    alert('Não é possível cadastrar uma atividade vazia!')
   }
 }
-/*
-function criarItem() {
-  var input = document.getElementById('item');
-  console.log(input.value);
-  var item = document.createElement('li');
 
-  var checkbox =;
-
-
-  item.appendChild(checkbox);
-  item.appendChild(label);
-  item.appendChild(botao);
-
-  var list = document.getElementById('listas';
-  list.appendChild()
+//Exibe conteúdo da lista no localStorage no console
+if (listaStorage) {
+  console.log(listaStorage)
 }
-*/
 
-//ir no localStorage ver se tem pela chave que você está usando no código
-  //vaso tenha, criar os respectivos itens no <ul>
-function carregarLista() {
-  var storage = JSON.parse(localStorage.getItem('lista'));
+function carregarAtividades() {
+  var storage = JSON.parse(localStorage.getItem('listaAtividades'));
   arrayLista = storage;
+
   for (var i = 0; i < arrayLista.length; i++) {
-    adicionarTarefa();
+
+    const novoElemento = document.createElement('li')
+
+
+    novoElemento.id = `item-${arrayLista[i].id}`
+
+    novoElemento.innerHTML = `
+      <input
+        type="checkbox"
+        name="chk-${arrayLista[i].id}"
+        onclick="marcarFeito(${arrayLista[i].id})"
+      >
+      <label for="chk-${arrayLista[i].id}">
+        ${arrayLista[i].titulo}
+      </label>
+      <button onclick="removeItem(${arrayLista[i].id})">
+        Deletar
+      </button>
+    `
+    ulAtividades.appendChild(novoElemento)
 
   }
 }
 
-// vincula funções aos elementos html
-botaoCadastrar.addEventListener('click', adicionarTarefa)
+//Eventos botões
+botaoCadastrar.addEventListener('click', adicionarAtividade)
 botaoLimpar.addEventListener('click', limparCampo)
-
-
-//fazer no HTML "body = onload e chamar a funcao de carregar lista"
