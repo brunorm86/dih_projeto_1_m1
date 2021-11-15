@@ -28,3 +28,4 @@ ___________________
 * CSS3
 * Javascript
 * Visual Studio Code (IDE)
+* Github (Versionamento)
