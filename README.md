@@ -1,5 +1,4 @@
-# dih_projeto_1_m01
- Projeto 01 do Módulo 01 do DEVinHouse 4ª Ed.
+ # Projeto 01 do Módulo 01 do DEVinHouse 4ª Ed.
  
 
 Você está participando de um processo seletivo para ingressar em uma vaga de programador em uma grande empresa de TI. Uma das etapas do processo envolve a criação de uma aplicação web de lista de afazeres (“to-do list”).
