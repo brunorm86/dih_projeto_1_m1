@@ -23,7 +23,7 @@ A aplicação que deverá ser realizada individualmente, deve contemplar os segu
 
 ___________________
 
-###Tecnologias utilizadas no projeto:
+### Tecnologias utilizadas no projeto:
 * HTML5
 * CSS3
 * Javascript
