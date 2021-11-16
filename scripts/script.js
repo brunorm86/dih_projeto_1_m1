@@ -50,6 +50,9 @@ function removeItem(id) {
 
 
     localStorage.setItem('listaAtividades', listaJSON)
+    if (listaAtividades.length == 0) {
+      listaAtividades = [];
+    }
   }
 }
 
@@ -126,30 +129,38 @@ if (listaStorage) {
 }
 
 function carregarAtividades() {
-  var storage = JSON.parse(localStorage.getItem('listaAtividades'));
-  arrayLista = storage;
 
-  for (var i = 0; i < arrayLista.length; i++) {
+
+  var storage = JSON.parse(localStorage.getItem('listaAtividades'));
+  listaAtividades = storage;
+
+  localStorage.clear();
+
+
+  for (var i = 0; i < listaAtividades.length; i++) {
 
     const novoElemento = document.createElement('li')
 
 
-    novoElemento.id = `item-${arrayLista[i].id}`
+    novoElemento.id = `item-${listaAtividades[i].id}`
 
     novoElemento.innerHTML = `
       <input
         type="checkbox"
-        name="chk-${arrayLista[i].id}"
-        onclick="marcarChecked(${arrayLista[i].id})"
+        name="chk-${listaAtividades[i].id}"
+        onclick="marcarChecked(${listaAtividades[i].id})"
       >
-      <label for="chk-${arrayLista[i].id}">
-        ${arrayLista[i].titulo}
+      <label for="chk-${listaAtividades[i].id}">
+        ${listaAtividades[i].titulo}
       </label>
-      <button onclick="removeItem(${arrayLista[i].id})">
+      <button onclick="removeItem(${listaAtividades[i].id})">
         Deletar
       </button>
     `
     ulAtividades.appendChild(novoElemento)
+
+    const listaJSON = JSON.stringify(listaAtividades)
+    localStorage.setItem('listaAtividades', listaJSON)
 
   }
 }
