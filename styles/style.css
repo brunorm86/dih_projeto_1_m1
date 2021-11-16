@@ -7,11 +7,14 @@ li,
 footer,
 table,
 tr,
-td {
+td,
+h1,
+p {
   margin: 0;
   border: 0;
   padding: 0;
   box-sizing: border-box;
+  justify-content: space-between;
 }
 
 html {
@@ -25,7 +28,6 @@ body {
   min-height: 100vh;
   position: relative;
   background-color: #e2e2e2;
-  background-image: url("/images/back0.jpg");
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,7 +35,7 @@ body {
 
 header {
   width: 100%;
-  padding-top: 20px;
+  padding-top: 5px;
   height: 30mm;
   overflow: hidden;
 }
@@ -43,21 +45,34 @@ header h1 {
 
 }
 
+h3{
+  margin-top: 50px;
+  font-size: 20px;
+ 
+}
+
+main>label{
+font-size: 25px;
+  font-weight: bolder;
+
+}
+
+  
 main {
   width: 250mm;
   max-width: calc(100vw - 50mm);
   padding: 20mm;
-  background-image: -webkit-linear-gradient(grey, white);
+  background-image: -webkit-linear-gradient(rgb(172, 172, 172), rgb(228, 228, 228));
   flex-grow: 1;
 
 }
 
-.dark {
-  background-color: #282828;
+.escuro {
+  background-image: -webkit-linear-gradient(black, rgba(22, 18, 18, 0.74));
   color: #f0f0f0;
 }
 
-.center {
+.centralizado {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -74,11 +89,9 @@ ul.listaAtividades>li {
   border-radius: 0%;
   padding: 2.5mm;
   display: flex;
+  transition: 250ms;
 }
 
-ul.listaAtividades>li:last-child {
-  margin-bottom: 0;
-}
 
 ul.listaAtividades>li:hover {
   border: 3px solid rgba(0, 0, 0, 0.775);
@@ -90,10 +103,16 @@ ul.listaAtividades>li>label {
   flex-grow: 1;
 }
 
-li.feito>label {
+li.checked>label {
   text-decoration: line-through;
   font-style: italic;
   color: gray;
+}
+
+p {
+  margin-top: 10px;
+  font-size: .75rem;
+
 }
 
 footer {
@@ -111,9 +130,19 @@ footer a {
   margin: 0;
   color: rgba(255, 255, 255, 0.849);
   font-size: .75rem;
-  transition: color 500ms;
+  transition: color 250ms;
 }
 
 footer a:hover {
-  color: rgba(219, 47, 47, 0.555);
+  color: rgb(168, 167, 167);
+}
+
+button{
+
+  transition: 250ms;
+}
+
+button:hover{
+  font-weight: bolder;
+  background-color: rgb(168, 167, 167);
 }

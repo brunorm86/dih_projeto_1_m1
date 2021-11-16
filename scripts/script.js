@@ -4,9 +4,6 @@ const botaoCadastrar = document.getElementById('btnCadastrar')
 const botaoLimpar = document.getElementById('btnLimpar')
 const ulAtividades = document.getElementById('ulAtividades')
 
-//Variável para "setar" id das tarefas
-var idUnico = 0;
-
 let listaAtividades = []
 
 let listaStorage = localStorage.getItem('listaAtividades')
@@ -21,7 +18,9 @@ function limparCampo() {
   campo.value = ''
 }
 
-function removeItem(index) {
+function removeItem(id) {
+
+
 
   let confirmar = confirm("Realmente deseja apagar esta tarefa?");
 
@@ -32,30 +31,42 @@ function removeItem(index) {
 
     for (let i = 0; i < listaAtividades.length; i++) {
 
-      if (i !== index) {
+      if (listaAtividades[i].id !== id) {
         novaLista.push(listaAtividades[i])
       }
     }
 
-    const itemParaRemocao = document.getElementById(`item-${index}`)
+    const itemParaRemocao = document.getElementById(`item-${id}`)
+
     ulAtividades.removeChild(itemParaRemocao)
 
 
     listaAtividades = novaLista;
+
+    console.log("LISTA->", { listaAtividades })
+
+
+    const listaJSON = JSON.stringify(listaAtividades)
+
+
+    localStorage.setItem('listaAtividades', listaJSON)
   }
 }
 
-function marcarFeito(index) {
+
+
+
+function marcarChecked(id) {
 
 
   for (let i = 0; i < listaAtividades.length; i++) {
 
 
-    if (listaAtividades[i].id == index) {
+    if (listaAtividades[i].id == id) {
       const item = listaAtividades[i]
-      item.feito = !(item.feito)
-      const elemento = document.getElementById(`item-${index}`)
-      elemento.className = item.feito ? 'feito' : ''
+      item.checked = !(item.checked)
+      const elemento = document.getElementById(`item-${id}`)
+      elemento.className = item.checked ? 'checked' : ''
     }
 
   }
@@ -65,9 +76,9 @@ function adicionarAtividade() {
   if (campo.value.length > 0) {
 
     const item = {
-      id: idUnico++,
+      id: Math.floor(Math.random() * 1001),
       titulo: campo.value,
-      feito: false
+      checked: false
     }
 
 
@@ -81,7 +92,7 @@ function adicionarAtividade() {
       <input
         type="checkbox"
         name="chk-${item.id}"
-        onclick="marcarFeito(${item.id})"
+        onclick="marcarChecked(${item.id})"
       >
       <label for="chk-${item.id}">
         ${item.titulo}
@@ -99,7 +110,6 @@ function adicionarAtividade() {
     console.log("LISTA->", { listaAtividades })
 
     const listaJSON = JSON.stringify(listaAtividades)
-
     localStorage.setItem('listaAtividades', listaJSON)
 
     limparCampo()
@@ -110,7 +120,7 @@ function adicionarAtividade() {
   }
 }
 
-//Exibe conteúdo da lista no localStorage no console
+
 if (listaStorage) {
   console.log(listaStorage)
 }
@@ -130,7 +140,7 @@ function carregarAtividades() {
       <input
         type="checkbox"
         name="chk-${arrayLista[i].id}"
-        onclick="marcarFeito(${arrayLista[i].id})"
+        onclick="marcarChecked(${arrayLista[i].id})"
       >
       <label for="chk-${arrayLista[i].id}">
         ${arrayLista[i].titulo}

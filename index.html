@@ -17,17 +17,17 @@
 
 <body onload="carregarAtividades()">
 
-  <header class="dark center">
+  <header class="escuro centralizado">
 
     <table>
       <tr>
         <td>
-          <h1 class="center">ORGANIZADOR DE ATIVIDADES / TO-DO LIST</h1>
+          <h1 class="centralizado">ORGANIZADOR DE ATIVIDADES / TO-DO LIST</h1>
         </td>
       </tr>
       <tr>
         <td>
-          <p class="center">Uma excelente ferramenta para organizar seus afazeres e otimizar seu tempo!</p>
+          <p class="centralizado">Uma excelente ferramenta para organizar seus afazeres e otimizar seu tempo!</p>
         </td>
       </tr>
     </table>
@@ -36,19 +36,19 @@
 
   <main>
 
-    <label for="campo">Nova Atividade</label>
+    <label class="centralizado" for="campo">Cadastrar Nova Atividade</label>
     <br>
 
-
-    <input size="100px" name="campo" type="text" placeholder="Descreva a atividade">
-
-
-    <button id="btnCadastrar">Cadastrar</button>
+    <div class="centralizado">
+      <input name="campo" type="text" placeholder="Descreva a atividade">
 
 
-    <input id="btnLimpar" type="button" value="Limpar">
+      <button id="btnCadastrar">Cadastrar</button>
 
-    <h3>Atividades Cadastradas</h3>
+
+      <button id="btnLimpar" value="Limpar">Limpar</button>
+    </div>
+    <h3 class="centralizado">Atividades Cadastradas</h3>
 
     <ul id="ulAtividades" class="listaAtividades">
 
@@ -57,7 +57,7 @@
 
   </main>
 
-  <footer class="dark center">
+  <footer class="escuro centralizado">
     <p>
       Bruno Ricardo Machado &copy; 2021 &middot;
       <a href="https://www.linkedin.com/in/bruno-ricardo-machado-783096218/" target="_blank">Linkedin</a>
