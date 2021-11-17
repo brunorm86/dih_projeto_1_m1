@@ -4,7 +4,7 @@ const botaoCadastrar = document.getElementById('btnCadastrar')
 const botaoLimpar = document.getElementById('btnLimpar')
 const ulAtividades = document.getElementById('ulAtividades')
 
-let listaAtividades = []
+var listaAtividades = []
 
 let listaStorage = localStorage.getItem('listaAtividades')
 
