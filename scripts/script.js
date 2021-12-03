@@ -66,14 +66,17 @@ function marcarChecked(id) {
 
 
     if (listaAtividades[i].id == id) {
-      const item = listaAtividades[i]
-      item.checked = !(item.checked)
-      const elemento = document.getElementById(`item-${id}`)
-      elemento.className = item.checked ? 'checked' : ''
+      //usar o proprio item no array
+      listaAtividades[i].checked = !listaAtividades[i].checked
+      
     }
-
+    const elemento = document.getElementById(`item-${listaAtividades[i].id}`)
+    elemento.className = listaAtividades[i].checked ? 'checked' : ''
+//adicionar forma de alterar no local storage já
   }
+
 }
+
 function adicionarAtividade() {
 
   if (campo.value.length > 0) {
@@ -132,7 +135,8 @@ function carregarAtividades() {
 
 
   var storage = JSON.parse(localStorage.getItem('listaAtividades'));
-  listaAtividades = storage;
+  if (storage != null)
+    listaAtividades = storage;
 
   localStorage.clear();
 
